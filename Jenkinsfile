@@ -20,7 +20,7 @@ pipeline {
         stage('Preparation') {
             steps {
                 git(
-                    url: 'git@github.com:AlessandroSantoni/docker-micropython-jenkins-esp8266.git',
+                    url: 'git@github.com:AlessandroSantoni/docker-micropython-jenkins.git',
                     branch: "main"
                 )}
         }
@@ -32,11 +32,9 @@ pipeline {
     }
     
     post {
-        
         success {
             archiveArtifacts artifacts: 'esp8266_micropython_build*.bin', fingerprint: true
         }
-
         cleanup {
             deleteDir()
         }
