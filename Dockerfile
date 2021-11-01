@@ -37,7 +37,9 @@ RUN chown -R micropython:micropython ../esp-open-sdk ../micropython
 
 USER micropython
 
-COPY ./210-expat.sh esp-open-sdk/crosstool-NG/scripts/build/companion_libs/
+RUN mkdir -p esp-open-sdk/crosstool-NG/.build/tarballs/
+COPY ./tarballs/expat-2.1.0.tar.gz esp-open-sdk/crosstool-NG/.build/tarballs/
+COPY ./tarballs/isl-0.14.tar.gz esp-open-sdk/crosstool-NG/.build/tarballs/
 
 RUN cd esp-open-sdk && make STANDALONE=y
 
